@@ -1,9 +1,9 @@
 require 'rails_helper'
 describe MoviesController do
   before(:each) do
-    @movie1 = FactoryBot.create(:movie, id: 1, title: "Inception", rating: "UG", description: "", release_date: "2010", director: "Christopher Nolan")
-    @movie2 = FactoryBot.create(:movie, id: 2, title: "Titanic", rating: "PG", description: "", release_date: "1997", director: "James Cameron")
-    @movie3 = FactoryBot.create(:movie, id: 3, title: "Fight Club", rating: "R", description: "underground club", release_date: "1999")
+    @movie1 = FactoryBot.create(:movie, id: 31, title: "Inception", rating: "UG", description: "", release_date: "2010", director: "Christopher Nolan")
+    @movie2 = FactoryBot.create(:movie, id: 32, title: "Titanic", rating: "PG", description: "", release_date: "1997", director: "James Cameron")
+    @movie3 = FactoryBot.create(:movie, id: 33, title: "Fight Club", rating: "R", description: "underground club", release_date: "1999")
   end
 
   describe 'preexisting method test in before(:each)' do
@@ -18,22 +18,22 @@ describe MoviesController do
     end
 
     it 'should redirect to appropriate url' do
-      get :index, 
-          {},    
+      get :index,
+          {},
           {ratings: {G: 'G', PG: 'PG'}}
       response.should redirect_to :ratings => {G: 'G', PG: 'PG'}
     end
 
     it 'should redirect to appropriate sort title url' do
-      get :index,             
-          {},                
-          {sort: 'title'}   
+      get :index,
+          {},
+          {sort: 'title'}
       response.should redirect_to :sort => 'title'
     end
 
     it 'should redirect to appropriate sort release_date url' do
-      get :index,          
-          {},             
+      get :index,
+          {},
           {sort: 'release_date'}
       response.should redirect_to :sort => 'release_date'
     end
